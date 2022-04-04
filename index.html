@@ -8,6 +8,7 @@
   </head>
   <body>
     <style>
+      /* Reset Styles */
       html {
         box-sizing: border-box;
       }
@@ -22,7 +23,17 @@
       ol[class] {
         padding: 0;
       }
-      /*МОДАЛЬНОЕ ОКНО*/
+
+      a {
+        text-decoration: none;
+      }
+      /* /.Reset Styles */
+
+      /* Import Font */
+      @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
+      /* /.Import Font */
+
+      /*Modal Window*/
       #bg_popup {
         position: fixed;
         z-index: 99999;
@@ -35,43 +46,295 @@
       }
 
       #popup {
+        display: flex;
+        flex-direction: column;
         background: #fff;
-        width: 350px;
-        margin: 25% auto;
-        padding: 5px 20px;
+        border-radius: 20px;
+        width: 730px;
+        margin: 15% auto;
+        padding: 30px 40px 25px 40px;
         position: relative;
       }
 
-      .close {
-        display: block;
-        position: absolute;
-        top: 5px;
-        right: 5px;
-        width: 20px;
-        height: 20px;
-        color: #555;
-        background: #1ba600;
-        cursor: pointer;
+      .header-popup {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        margin-bottom: 5px;
       }
+
+      .link {
+        text-align: center;
+        display: block;
+        width: 200px;
+        padding: 10px 50px 10px 50px;
+        background-color: #2b8cdb;
+        color: #fff;
+        border-radius: 25px;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 36px;
+        font-family: 'Roboto Condensed', sans-serif;
+      }
+
+      .img {
+        width: 83px;
+        height: 65px;
+      }
+
+      .bg-svg {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100px;
+        height: 92px;
+        background: rgba(195, 198, 197, 0.5);
+        border-radius: 10px;
+      }
+
+      .span {
+        position: absolute;
+        right: 40px;
+        top: 50px;
+        width: 22px;
+        height: 22px;
+      }
+
+      .span:before,
+      .span:after {
+        position: absolute;
+        left: 15px;
+        content: ' ';
+        height: 33px;
+        width: 2px;
+        background-color: #000 !important;
+      }
+      .span:before {
+        background-color: #000 !important;
+        transform: rotate(45deg);
+      }
+      .span:after {
+        background-color: #000 !important;
+        transform: rotate(-45deg);
+      }
+
+      .text-popup {
+        font-family: 'Roboto Condensed', sans-serif;
+        font-weight: 400;
+        font-size: 24px;
+        line-height: 36px;
+        color: #333333;
+        width: 500px;
+      }
+
+      .body-wrapper {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        border-bottom: 3px solid #337ab7;
+        margin-bottom: 20px;
+      }
+
+      .wrap-link {
+        display: flex;
+        justify-content: center;
+      }
+
+      .popup-title {
+        font-weight: 700;
+        font-size: 30px;
+        line-height: 45px;
+        color: #333333;
+      }
+
+      @media (max-width: 768px) {
+        #popup {
+          width: 500px;
+          padding: 10px 30px 15px 30px;
+        }
+
+        .span {
+          top: 35px;
+        }
+
+        .span:before,
+        .span:after {
+          height: 25px;
+        }
+
+        .popup-title {
+          font-size: 25px;
+          line-height: 35px;
+        }
+
+        .text-popup {
+          font-size: 18px;
+          line-height: 25px;
+          margin-left: 10px;
+        }
+
+        .bg-svg {
+          height: 75px;
+        }
+
+        .link {
+          font-size: 18px;
+          line-height: 30px;
+          padding-left: 30px;
+          padding-right: 30px;
+        }
+      }
+
+      @media (max-width: 525px) {
+        #popup {
+          width: 400px;
+          padding: 10px 20px 10px 20px;
+        }
+
+        .body-wrapper {
+          flex-direction: column;
+          justify-content: center;
+          border-bottom: 2px solid #337ab7;
+        }
+
+        .span {
+          right: 25px;
+          top: 30px;
+        }
+
+        .span:before,
+        .span:after {
+          height: 25px;
+        }
+
+        .popup-title {
+          font-weight: 600;
+          font-size: 22px;
+          line-height: 30px;
+        }
+
+        .text-popup {
+          font-size: 16px;
+          line-height: 20px;
+          margin-left: 0;
+          width: 300px;
+        }
+
+        .bg-svg {
+          width: 80px;
+        }
+
+        .link {
+          font-size: 16px;
+          line-height: 25px;
+          padding-left: 10px;
+          padding-right: 10px;
+        }
+      }
+
+      @media (max-width: 412px) {
+        #popup {
+          width: 315px;
+          padding: 15px;
+        }
+
+        .span {
+          right: 20px;
+          top: 30px;
+        }
+
+        .span:before,
+        .span:after {
+          height: 20px;
+        }
+
+        .popup-title {
+          font-weight: 600;
+          font-size: 22px;
+          line-height: 30px;
+        }
+
+        .text-popup {
+          font-size: 14px;
+          line-height: 18px;
+          width: 250px;
+        }
+
+        .link {
+          font-size: 14px;
+          line-height: 20px;
+          width: 150px;
+        }
+      }
+
+      /* /.Modal Window */
     </style>
 
-    <div id="bg_popup">
-      <div id="popup">
-        <a
-          id="setCookie"
-          class="close"
-          href="#"
-          title="Закрыть"
-          onclick="document.getElementById('bg_popup').style.display='none'; return false;"
-          >X</a
-        >
-        <h1>Пример</h1>
-        <p>Модальное окно с задержкой в 4 секунды, которое появляется раз в сутки.</p>
+    <div id="bg_popup" class="bg_popup">
+      <div id="popup" class="popup">
+        <div class="header-popup">
+          <h1 class="popup-title">Увага</h1>
+          <a
+            class="setCookie close"
+            href="#"
+            title="Закрыть"
+            onclick="document.getElementById('bg_popup').style.display='none'; return false;"
+          >
+            <span class="span"></span>
+          </a>
+        </div>
+
+        <div class="body-wrapper">
+          <div class="bg-svg">
+            <img class="img" src="danger.svg" alt="" />
+          </div>
+          <p class="text-popup">
+            Інтернет-магазин тимчасово не приймає замовлення. Інформація на сайті не коректна
+          </p>
+        </div>
+        <div class="wrap-link">
+          <a
+            id="setCookie"
+            class="setCookie link"
+            href="#"
+            onclick="document.getElementById('bg_popup').style.display='none'; return false;"
+            >Добре</a
+          >
+        </div>
       </div>
     </div>
 
-    <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"></script>
-    <script src="jquery.cookie.js"></script>
-    <script src="index.js"></script>
+    <script>
+      document.addEventListener('DOMContentLoaded', function () {
+        const createItemInLocalStorage = (currentDate) => {
+          const cookieBox = document.querySelectorAll('.setCookie');
+          document.querySelector('.bg_popup').style.display = 'block';
+
+          cookieBox.forEach((setCookie) => {
+            setCookie.addEventListener('click', function (e) {
+              let date = new Date(currentDate);
+              date.setTime(date.getTime() + 3 * 60 * 60 * 1000);
+
+              localStorage.setItem('expiresAt', date);
+
+              document.querySelector('.bg_popup').style.display = 'none';
+            });
+          });
+        };
+
+        const expiresAtValue = localStorage.getItem('expiresAt');
+        let currentDate = new Date();
+
+        if (!expiresAtValue) {
+          createItemInLocalStorage(currentDate);
+        } else {
+          const expiresDate = new Date(expiresAtValue);
+          if (expiresDate - currentDate < 0) {
+            createItemInLocalStorage(currentDate);
+          }
+        }
+      });
+    </script>
   </body>
 </html>
