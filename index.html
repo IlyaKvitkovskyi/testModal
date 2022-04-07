@@ -9,29 +9,14 @@
   <body>
     <style>
       /* Reset Styles */
-      html {
+      .bg_popup {
         box-sizing: border-box;
       }
 
-      *,
-      *::after,
-      *::before {
+      .bg_popup * {
         box-sizing: inherit;
-      }
-
-      ul[class],
-      ol[class] {
-        padding: 0;
-      }
-
-      a {
-        text-decoration: none;
-      }
+      }   
       /* /.Reset Styles */
-
-      /* Import Font */
-      @import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed&display=swap');
-      /* /.Import Font */
 
       /*Modal Window*/
       #bg_popup {
@@ -64,6 +49,9 @@
       }
 
       .link {
+        cursor: pointer;
+        outline: none;
+        border: none;
         text-align: center;
         display: block;
         width: 200px;
@@ -75,6 +63,11 @@
         font-size: 24px;
         line-height: 36px;
         font-family: 'Roboto Condensed', sans-serif;
+      }
+
+      .setCookie {
+        border: none;
+        background: none;
       }
 
       .img {
@@ -102,6 +95,7 @@
 
       .span:before,
       .span:after {
+        box-sizing: inherit;
         position: absolute;
         left: 15px;
         content: ' ';
@@ -294,13 +288,13 @@
           </p>
         </div>
         <div class="wrap-link">
-          <a
+          <button
             id="setCookie"
-            class="setCookie link"
-            href="#"
+            class="setCookie"
             onclick="document.getElementById('bg_popup').style.display='none'; return false;"
-            >Добре</a
           >
+            <a class="link" onclick="location.href='https://pancer.com.ua/kontakty'">Добре</a>
+          </button>
         </div>
       </div>
     </div>
@@ -314,7 +308,7 @@
           cookieBox.forEach((setCookie) => {
             setCookie.addEventListener('click', function (e) {
               let date = new Date(currentDate);
-              date.setTime(date.getTime() + 3 * 60 * 60 * 1000);
+              date.setTime(date.getTime() + 60 * 20000);
 
               localStorage.setItem('expiresAt', date);
 
